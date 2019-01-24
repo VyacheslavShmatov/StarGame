@@ -26,7 +26,7 @@ public class StarGame implements ApplicationListener, InputProcessor {
 		float h = Gdx.graphics.getHeight();
 		batch = new SpriteBatch();
 
-		texture = new Texture(Gdx.files.internal("spaceship3.png"));
+		texture = new Texture(Gdx.files.internal("darkwing3.png"));
 		img2 = new Texture("ocean1.jpg");
 		sprite = new Sprite(texture);
 		posX = w/2 - sprite.getWidth()/2;
