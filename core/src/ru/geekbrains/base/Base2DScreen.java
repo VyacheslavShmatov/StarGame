@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import ru.geekbrains.math.MatrixUtils;
 import ru.geekbrains.math.Rect;
 
-public class Base2DScreen implements Screen, InputProcessor {
+public abstract class Base2DScreen implements Screen, InputProcessor {
 
     protected SpriteBatch batch;
 
@@ -22,7 +22,7 @@ public class Base2DScreen implements Screen, InputProcessor {
     private Matrix4 worldToGl;
     private Matrix3 screenToWorlds;
 
-    private Vector2 touch; //вектор отображения координат клика мыши пользователем
+    private Vector2 touch;
 
     @Override
     public void show() {
@@ -35,7 +35,6 @@ public class Base2DScreen implements Screen, InputProcessor {
         this.worldToGl = new Matrix4();
         this.screenToWorlds = new Matrix3();
         touch = new Vector2();
-
     }
 
     @Override
@@ -56,7 +55,12 @@ public class Base2DScreen implements Screen, InputProcessor {
 
         MatrixUtils.calcTransitionMatrix(worldToGl, worldBounds, glBounds);
         batch.setProjectionMatrix(worldToGl);
-        MatrixUtils.calcTransitionMatrix(screenToWorlds, screenBounds, worldBounds); //Matrix3
+        MatrixUtils.calcTransitionMatrix(screenToWorlds, screenBounds, worldBounds);
+        resize(worldBounds);
+    }
+
+    public void resize(Rect worldBounds) {
+
     }
 
     @Override
@@ -149,4 +153,3 @@ public class Base2DScreen implements Screen, InputProcessor {
         return false;
     }
 }
-
