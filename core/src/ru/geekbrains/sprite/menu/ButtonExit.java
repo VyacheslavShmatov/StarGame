@@ -2,7 +2,9 @@ package ru.geekbrains.sprite.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
 import ru.geekbrains.math.Rect;
+
 
 public class ButtonExit extends ScaledTouchUpButton {
 
