@@ -13,7 +13,6 @@ import ru.geekbrains.math.Rect;
 import ru.geekbrains.sprite.Background;
 import ru.geekbrains.sprite.Star;
 import ru.geekbrains.sprite.menu.ButtonExit;
-import ru.geekbrains.sprite.menu.ButtonNewGame;
 import ru.geekbrains.sprite.menu.ButtonPlay;
 
 public class MenuScreen extends Base2DScreen {
@@ -27,7 +26,6 @@ public class MenuScreen extends Base2DScreen {
 
     private ButtonExit buttonExit;
     private ButtonPlay buttonPlay;
-    private ButtonNewGame buttonNewGame;
 
     public MenuScreen(Game game) {
         this.game = game;
@@ -45,7 +43,6 @@ public class MenuScreen extends Base2DScreen {
         }
         buttonExit = new ButtonExit(atlas);
         buttonPlay = new ButtonPlay(atlas, game);
-        buttonNewGame = new ButtonNewGame(atlas);
     }
 
     @Override
@@ -56,8 +53,8 @@ public class MenuScreen extends Base2DScreen {
     }
 
     public void update(float delta) {
-        for (Star aStar : star) {
-            aStar.update(delta);
+        for (int i = 0; i < star.length; i++) {
+            star[i].update(delta);
         }
     }
 
@@ -66,24 +63,22 @@ public class MenuScreen extends Base2DScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.draw(batch);
-        for (Star aStar : star) {
-            aStar.draw(batch);
+        for (int i = 0; i < star.length; i++) {
+            star[i].draw(batch);
         }
         buttonExit.draw(batch);
         buttonPlay.draw(batch);
-        buttonNewGame.draw(batch);
         batch.end();
     }
 
     @Override
     public void resize(Rect worldBounds) {
         background.resize(worldBounds);
-        for (Star aStar : star) {
-            aStar.resize(worldBounds);
+        for (int i = 0; i < star.length; i++) {
+            star[i].resize(worldBounds);
         }
         buttonExit.resize(worldBounds);
         buttonPlay.resize(worldBounds);
-        buttonNewGame.resize(worldBounds);
     }
 
     @Override
@@ -97,7 +92,6 @@ public class MenuScreen extends Base2DScreen {
     public boolean touchDown(Vector2 touch, int pointer) {
         buttonExit.touchDown(touch, pointer);
         buttonPlay.touchDown(touch, pointer);
-        buttonNewGame.touchDown(touch, pointer);
         return super.touchDown(touch, pointer);
     }
 
@@ -105,7 +99,6 @@ public class MenuScreen extends Base2DScreen {
     public boolean touchUp(Vector2 touch, int pointer) {
         buttonExit.touchUp(touch, pointer);
         buttonPlay.touchUp(touch, pointer);
-        buttonNewGame.touchDown(touch, pointer);
         return super.touchUp(touch, pointer);
     }
 }
